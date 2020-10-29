@@ -1,0 +1,13 @@
+E0 = Main Extruder ( Left Side)
+E1 = Second Extruder ( Right Side, Mirrored)
+E2 = X2/U Axis
+E3 = Z driver 2 for bed leveling
+
+Heater 0 = Bed
+Heater 1 = Main extruder ( Left Side)
+Heater 2 = Second Extruder ( Right Side, Mirrored)
+
+Fan 0 = Main Extruder part fan
+Fan 1 = Extruder heat sink fan ( Need to split this? To both heat sink fans)
+Fan 2 = Second Extruder part fan
+Always on fan = for controller board

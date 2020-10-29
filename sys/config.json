@@ -1,1 +1,295 @@
-{"board":"duetm10","firmware":3,"nvram":false,"auto_save":{"enabled":false,"save_threshold":10,"resume_threshold":11,"gcodes_to_run":"M913 X0 Y0 G91 M83 G1 Z3 E-5 F1000"},"geometry":{"type":"cartesian","mins":[-105,-33,0],"maxes":[300,200,295],"delta_radius":105.6,"homed_height":250,"low_dive_height":false,"max_carriage_travel":260,"print_radius":85,"rod_length":215,"z_min":0},"drives":[{"direction":0,"microstepping":256,"microstepping_interpolation":false,"steps_per_mm":1280,"instant_dv":7,"max_speed":160,"acceleration":800,"current":1000,"driver":0,"endstop_type":1,"endstop_location":1,"driver_v3":"0.0","endstop_pin":"!xstop"},{"direction":1,"microstepping":256,"microstepping_interpolation":false,"steps_per_mm":1280,"instant_dv":4,"max_speed":160,"acceleration":500,"current":1000,"driver":1,"endstop_type":1,"endstop_location":1,"driver_v3":"0.1","endstop_pin":"!ystop"},{"direction":1,"microstepping":256,"microstepping_interpolation":false,"steps_per_mm":6400,"instant_dv":0.3,"max_speed":3,"acceleration":100,"current":600,"driver":1,"endstop_type":3,"endstop_location":1,"endstop":null,"driver_v3":"0.2","endstop_pin":"zstop"},{"direction":1,"microstepping":256,"microstepping_interpolation":false,"steps_per_mm":6640,"instant_dv":7,"max_speed":100,"acceleration":10000,"current":750,"driver":3,"driver_v3":"0.3"},{"direction":1,"microstepping":256,"microstepping_interpolation":false,"steps_per_mm":6640,"instant_dv":7,"max_speed":100,"acceleration":10000,"current":750,"driver":4,"driver_v3":"0.4"},{"direction":1,"microstepping":256,"microstepping_interpolation":false,"steps_per_mm":1280,"instant_dv":7,"max_speed":160,"acceleration":800,"current":1000,"driver":5,"driver_v3":"1.0"},{"direction":1,"microstepping":256,"microstepping_interpolation":false,"steps_per_mm":6400,"instant_dv":0.3,"max_speed":3,"acceleration":100,"current":600,"driver":6,"driver_v3":"1.1"}],"idle":{"used":true,"factor":30,"timeout":30},"homing_speed_fast":40,"homing_speed_slow":10,"travel_speed":150,"z_dive_height":5,"slow_homing":false,"probe":{"type":"bltouch","recovery_time":0.4,"trigger_height":3,"trigger_value":500,"x_offset":30,"y_offset":0.5,"speed":2,"deploy":true,"points":[],"pwm_channel":64,"pwm_inverted":false,"pwm_pin":"zprobe.mod","input_pin":"zprobe.in","modulation_pin":null},"bed_is_nozzle":false,"bed":{"present":true,"heater":0,"use_pid":true},"chamber":{"present":false,"heater":0,"use_pid":false},"heaters":[{"temp_limit":200,"scale_factor":100,"series":2200,"thermistor":100000,"beta":4725,"c":7.06e-8,"channel":0,"sensor":0,"output_pin":"bedheat","sensor_type":"thermistor","sensor_pin":"bedtemp"},{"temp_limit":450,"scale_factor":100,"series":2200,"thermistor":500000,"beta":4723,"c":1.19622e-7,"channel":1,"sensor":1,"output_pin":"e0heat","sensor_type":"thermistor","sensor_pin":"e0temp"},{"temp_limit":450,"scale_factor":100,"series":2200,"thermistor":500000,"beta":4723,"a":0.0005717725,"b":0.0002416626,"c":1.19622e-7,"channel":2,"sensor":1,"output_pin":"e1heat","sensor_type":"thermistor","sensor_pin":"e1temp"}],"num_nozzles":2,"toolchange_wait_for_temperatures":false,"generate_t_code":true,"tools":[{"mix_ratio":[],"number":0,"name":"Main (Left)","extruders":[0],"heaters":[1],"x_offset":0,"y_offset":0,"z_offset":0,"fans":[0]},{"mix_ratio":[],"number":1,"name":"Secondary (Right)","extruders":[1],"heaters":[2],"fans":[2],"x_offset":0,"y_offset":0,"z_offset":0}],"compensation_x_offset":15,"compensation_y_offset":15,"peripheral_points":3,"halfway_points":0,"calibration_factors":3,"probe_radius":85,"mesh":{"x_min":10,"x_max":290,"y_min":10,"y_max":190,"radius":85,"spacing":40},"home_first":false,"orthogonal":{"compensation":false,"height":50,"deviations":[0,0,0]},"network":{"enabled":true,"mac_address":"","name":"lk_printer","password":"","ssid":"","ssid_password":"","dhcp":false,"ip":"192.168.1.127","netmask":"255.255.255.0","gateway":"192.168.1.254","protocols":{"http":true,"ftp":false,"telnet":false}},"fans":[{"value":0,"inverted":false,"frequency":500,"thermostatic":false,"heaters":[],"trigger_temperature":45,"name":"","output_pin":"fan0"},{"name":"","value":100,"inverted":false,"frequency":500,"thermostatic":true,"heaters":[1,2],"trigger_temperature":45,"output_pin":"fan1"},{"name":"","value":0,"inverted":false,"frequency":500,"thermostatic":false,"heaters":[1,2],"trigger_temperature":45,"output_pin":"fan2"}],"custom_settings":"M501\nM557 X10:290 Y10:190 P5:5 ; Bed leveling mesh\nM572 D0 S0.025 ; pressure advance\nM584 X0 Y1 Z2:6 E3 ; Set axis drivers\nM671 X-147.75:297.75 Y0:0 S30 ; leadscrews at left (connected to Z) and right\nM208 X-105:300 Y-33:200 ; X carriage moves from -5 to 205, Y bed goes from 0 to 200 ","expansion_boards":["Dual Stepper Driver Expansion Module"],"standalone":true,"display":{"type":0,"encoder_steps":4,"spi_frequency":2000000,"menus":[{"name":"main","value":""}],"images":[]},"panelDue":false}
+{
+    "board": "duetm10",
+    "firmware": 3,
+    "nvram": false,
+    "auto_save": {
+        "enabled": false,
+        "save_threshold": 10,
+        "resume_threshold": 11,
+        "gcodes_to_run": "M913 X0 Y0 G91 M83 G1 Z3 E-5 F1000"
+    },
+    "geometry": {
+        "type": "cartesian",
+        "mins": [-105, -33, 0],
+        "maxes": [300, 200, 295],
+        "delta_radius": 105.6,
+        "homed_height": 250,
+        "low_dive_height": false,
+        "max_carriage_travel": 260,
+        "print_radius": 85,
+        "rod_length": 215,
+        "z_min": 0
+    },
+    "drives": [{
+            "direction": 0,
+            "microstepping": 256,
+            "microstepping_interpolation": false,
+            "steps_per_mm": 1280,
+            "instant_dv": 7,
+            "max_speed": 160,
+            "acceleration": 800,
+            "current": 1000,
+            "driver": 0,
+            "endstop_type": 1,
+            "endstop_location": 1,
+            "driver_v3": "0.0",
+            "endstop_pin": "!xstop"
+        }, {
+            "direction": 1,
+            "microstepping": 256,
+            "microstepping_interpolation": false,
+            "steps_per_mm": 1280,
+            "instant_dv": 4,
+            "max_speed": 160,
+            "acceleration": 500,
+            "current": 1000,
+            "driver": 1,
+            "endstop_type": 1,
+            "endstop_location": 1,
+            "driver_v3": "0.1",
+            "endstop_pin": "!ystop"
+        }, {
+            "direction": 1,
+            "microstepping": 256,
+            "microstepping_interpolation": false,
+            "steps_per_mm": 6400,
+            "instant_dv": 0.3,
+            "max_speed": 3,
+            "acceleration": 100,
+            "current": 600,
+            "driver": 1,
+            "endstop_type": 3,
+            "endstop_location": 1,
+            "endstop": null,
+            "driver_v3": "0.2",
+            "endstop_pin": "zstop"
+        }, {
+            "direction": 1,
+            "microstepping": 256,
+            "microstepping_interpolation": false,
+            "steps_per_mm": 6640,
+            "instant_dv": 7,
+            "max_speed": 100,
+            "acceleration": 10000,
+            "current": 750,
+            "driver": 3,
+            "driver_v3": "0.3"
+        }, {
+            "direction": 1,
+            "microstepping": 256,
+            "microstepping_interpolation": false,
+            "steps_per_mm": 6640,
+            "instant_dv": 7,
+            "max_speed": 100,
+            "acceleration": 10000,
+            "current": 750,
+            "driver": 4,
+            "driver_v3": "0.4"
+        }, {
+            "direction": 1,
+            "microstepping": 256,
+            "microstepping_interpolation": false,
+            "steps_per_mm": 1280,
+            "instant_dv": 7,
+            "max_speed": 160,
+            "acceleration": 800,
+            "current": 1000,
+            "driver": 5,
+            "driver_v3": "1.0"
+        }, {
+            "direction": 1,
+            "microstepping": 256,
+            "microstepping_interpolation": false,
+            "steps_per_mm": 6400,
+            "instant_dv": 0.3,
+            "max_speed": 3,
+            "acceleration": 100,
+            "current": 600,
+            "driver": 6,
+            "driver_v3": "1.1"
+        }
+    ],
+    "idle": {
+        "used": true,
+        "factor": 30,
+        "timeout": 30
+    },
+    "homing_speed_fast": 40,
+    "homing_speed_slow": 10,
+    "travel_speed": 150,
+    "z_dive_height": 5,
+    "slow_homing": false,
+    "probe": {
+        "type": "bltouch",
+        "recovery_time": 0.4,
+        "trigger_height": 3,
+        "trigger_value": 500,
+        "x_offset": 30,
+        "y_offset": 0.5,
+        "speed": 2,
+        "deploy": true,
+        "points": [],
+        "pwm_channel": 64,
+        "pwm_inverted": false,
+        "pwm_pin": "zprobe.mod",
+        "input_pin": "zprobe.in",
+        "modulation_pin": null
+    },
+    "bed_is_nozzle": false,
+    "bed": {
+        "present": true,
+        "heater": 0,
+        "use_pid": true
+    },
+    "chamber": {
+        "present": false,
+        "heater": 0,
+        "use_pid": false
+    },
+    "heaters": [{
+            "temp_limit": 200,
+            "scale_factor": 100,
+            "series": 2200,
+            "thermistor": 100000,
+            "beta": 4725,
+            "c": 7.06e-8,
+            "channel": 0,
+            "sensor": 0,
+            "output_pin": "bedheat",
+            "sensor_type": "thermistor",
+            "sensor_pin": "bedtemp"
+        }, {
+            "temp_limit": 450,
+            "scale_factor": 100,
+            "series": 2200,
+            "thermistor": 500000,
+            "beta": 4723,
+            "c": 1.19622e-7,
+            "channel": 1,
+            "sensor": 1,
+            "output_pin": "e0heat",
+            "sensor_type": "thermistor",
+            "sensor_pin": "e0temp"
+        }, {
+            "temp_limit": 450,
+            "scale_factor": 100,
+            "series": 2200,
+            "thermistor": 500000,
+            "beta": 4723,
+            "a": 0.0005717725,
+            "b": 0.0002416626,
+            "c": 1.19622e-7,
+            "channel": 2,
+            "sensor": 1,
+            "output_pin": "e1heat",
+            "sensor_type": "thermistor",
+            "sensor_pin": "e1temp"
+        }
+    ],
+    "num_nozzles": 2,
+    "toolchange_wait_for_temperatures": false,
+    "generate_t_code": true,
+    "tools": [{
+            "mix_ratio": [],
+            "number": 0,
+            "name": "Main (Left)",
+            "extruders": [0],
+            "heaters": [1],
+            "x_offset": 0,
+            "y_offset": 0,
+            "z_offset": 0,
+            "fans": [0]
+        }, {
+            "mix_ratio": [],
+            "number": 1,
+            "name": "Secondary (Right)",
+            "extruders": [1],
+            "heaters": [2],
+            "fans": [2],
+            "x_offset": 0,
+            "y_offset": 0,
+            "z_offset": 0
+        }
+    ],
+    "compensation_x_offset": 15,
+    "compensation_y_offset": 15,
+    "peripheral_points": 3,
+    "halfway_points": 0,
+    "calibration_factors": 3,
+    "probe_radius": 85,
+    "mesh": {
+        "x_min": 10,
+        "x_max": 290,
+        "y_min": 10,
+        "y_max": 190,
+        "radius": 85,
+        "spacing": 40
+    },
+    "home_first": false,
+    "orthogonal": {
+        "compensation": false,
+        "height": 50,
+        "deviations": [0, 0, 0]
+    },
+    "network": {
+        "enabled": true,
+        "mac_address": "",
+        "name": "lk_printer",
+        "password": "",
+        "ssid": "",
+        "ssid_password": "",
+        "dhcp": false,
+        "ip": "192.168.1.127",
+        "netmask": "255.255.255.0",
+        "gateway": "192.168.1.254",
+        "protocols": {
+            "http": true,
+            "ftp": false,
+            "telnet": false
+        }
+    },
+    "fans": [{
+            "value": 0,
+            "inverted": false,
+            "frequency": 500,
+            "thermostatic": false,
+            "heaters": [],
+            "trigger_temperature": 45,
+            "name": "",
+            "output_pin": "fan0"
+        }, {
+            "name": "",
+            "value": 100,
+            "inverted": false,
+            "frequency": 500,
+            "thermostatic": true,
+            "heaters": [1, 2],
+            "trigger_temperature": 45,
+            "output_pin": "fan1"
+        }, {
+            "name": "",
+            "value": 0,
+            "inverted": false,
+            "frequency": 500,
+            "thermostatic": false,
+            "heaters": [1, 2],
+            "trigger_temperature": 45,
+            "output_pin": "fan2"
+        }
+    ],
+    "custom_settings": "M501\nM557 X10:290 Y10:190 P5:5 ; Bed leveling mesh\nM572 D0 S0.025 ; pressure advance\nM584 X0 Y1 Z2:6 E3 ; Set axis drivers\nM671 X-147.75:297.75 Y0:0 S30 ; leadscrews at left (connected to Z) and right\nM208 X-105:300 Y-33:200 ; X carriage moves from -5 to 205, Y bed goes from 0 to 200 ",
+    "expansion_boards": ["Dual Stepper Driver Expansion Module"],
+    "standalone": true,
+    "display": {
+        "type": 0,
+        "encoder_steps": 4,
+        "spi_frequency": 2000000,
+        "menus": [{
+                "name": "main",
+                "value": ""
+            }
+        ],
+        "images": []
+    },
+    "panelDue": false
+}

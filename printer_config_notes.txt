@@ -1,7 +1,9 @@
-E0 = Main Extruder ( Left Side)
-E1 = Second Extruder ( Right Side, Mirrored)
-E2 = X2/U Axis
-E3 = Z driver 2 for bed leveling
+E0  Drive 3 = Main Extruder ( Left Side)
+E1 Drive 4 = Second Extruder ( Right Side, Mirrored)
+E2 Drive 5 = X2/U Axis
+E3 Drive 6= Z driver 2 for bed leveling
+
+U Endstop is in "zstop"
 
 Heater 0 = Bed
 Heater 1 = Main extruder ( Left Side)

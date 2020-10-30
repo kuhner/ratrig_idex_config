@@ -24,23 +24,24 @@ M569 P3 S1                                                      ; physical drive
 M569 P4 S1                                                      ; physical drive 4 goes forwards
 M569 P5 S1                                                      ; physical drive 5 goes forwards
 M569 P6 S1                                                      ; physical drive 6 goes forwards
-M584 X0 Y1 Z2 E3:4:5:6                                          ; set drive mapping
-M350 X256 Y256 Z256 E256:256:256:256 I0                         ; configure microstepping without interpolation
-M92 X1280.00 Y1280.00 Z6400.00 E6640.00:6640.00:1280.00:6400.00 ; set steps per mm
-M566 X420.00 Y240.00 Z18.00 E420.00:420.00:420.00:18.00         ; set maximum instantaneous speed changes (mm/min)
-M203 X9600.00 Y9600.00 Z180.00 E6000.00:6000.00:9600.00:180.00  ; set maximum speeds (mm/min)
-M201 X800.00 Y500.00 Z100.00 E10000.00:10000.00:800.00:100.00   ; set accelerations (mm/s^2)
-M906 X1000 Y1000 Z600 E750:750:1000:600 I30                     ; set motor currents (mA) and motor idle factor in per cent
+M584 X0 Y1 Z2:6 U5 E3:4                                         ; set drive mapping
+M350 X256 Y256 Z256 U256 E256:256 I0                            ; configure microstepping without interpolation
+M92 X1280.00 Y1280.00 Z6400.00 U1280.00 E6640.00:6640.00        ; set steps per mm
+M566 X420.00 Y240.00 Z18.00 U420.00 E420.00:420.00              ; set maximum instantaneous speed changes (mm/min)
+M203 X9600.00 Y9600.00 Z180.00 U9600.00 E6000.00:6000.00        ; set maximum speeds (mm/min)
+M201 X800.00 Y500.00 Z100.00 U800.00 E10000.00:10000.00         ; set accelerations (mm/s^2)
+M906 X1000 Y1000 Z600 U1000 E750:750 I30                        ; set motor currents (mA) and motor idle factor in per cent
 M84 S30                                                         ; Set idle timeout
 
 ; Axis Limits
-M208 X-105 Y-33 Z0 S1                                           ; set axis minima
-M208 X300 Y200 Z295 S0                                          ; set axis maxima
+M208 X-105 Y-33 U0 Z0 S1                                           ; set axis minima
+M208 X300 Y200 U405 Z295 S0                                          ; set axis maxima
 
 ; Endstops
 M574 X1 S1 P"!xstop"                                            ; configure active-high endstop for low end on X via pin !xstop
 M574 Y1 S1 P"!ystop"                                            ; configure active-high endstop for low end on Y via pin !ystop
 M574 Z1 S2                                                      ; configure Z-probe endstop for low end on Z
+M574 U2 S1 p"!zstop"                                            ; configure active-high endstop for high end on U via pin !zstop
 
 ; Z-Probe
 M950 S0 C"^zprobe.mod"                                          ; create servo pin 0 for BLTouch
@@ -73,7 +74,7 @@ M106 P2 S0 H-1                                                  ; set fan 2 valu
 M563 P0 S"Main (Left)" D0 H1 F0                                 ; define tool 0
 G10 P0 X0 Y0 Z0                                                 ; set tool 0 axis offsets
 G10 P0 R0 S0                                                    ; set initial tool 0 active and standby temperatures to 0C
-M563 P1 S"Secondary (Right)" D1 H2 F2                           ; define tool 1
+M563 P1 S"Secondary (Right)" D1 H2 X3 F2                        ; define tool 1
 G10 P1 X0 Y0 Z0                                                 ; set tool 1 axis offsets
 G10 P1 R0 S0                                                    ; set initial tool 1 active and standby temperatures to 0C
 
@@ -81,9 +82,7 @@ G10 P1 R0 S0                                                    ; set initial to
 M501
 M557 X10:290 Y10:190 P5:5                                       ; Bed leveling mesh
 M572 D0 S0.025                                                  ; pressure advance
-M584 X0 Y1 Z2:6 E3                                              ; Set axis drivers
 M671 X-147.75:297.75 Y0:0 S30                                   ; leadscrews at left (connected to Z) and right
-M208 X-105:300 Y-33:200                                         ; X carriage moves from -5 to 205, Y bed goes from 0 to 200 
 
 ; Miscellaneous
 T0                                                              ; select first tool

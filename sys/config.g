@@ -24,7 +24,7 @@ M569 P3 S1                                                      ; physical drive
 M569 P4 S1                                                      ; physical drive 4 goes forwards
 M569 P5 S1                                                      ; physical drive 5 goes forwards
 M569 P6 S1                                                      ; physical drive 6 goes forwards
-M584 X0 Y1 Z2:6 U5 E3:4                                         ; set drive mapping
+M584 X0 Y1 Z2:6 U4 E3:5                                         ; set drive mapping
 M350 X256 Y256 Z256 U256 E256:256 I0                            ; configure microstepping without interpolation
 M92 X1280.00 Y1280.00 Z6400.00 U1280.00 E6640.00:6640.00        ; set steps per mm
 M566 X420.00 Y240.00 Z18.00 U420.00 E420.00:420.00              ; set maximum instantaneous speed changes (mm/min)
@@ -41,7 +41,7 @@ M208 X300 Y200 U405 Z295 S0                                          ; set axis 
 M574 X1 S1 P"!xstop"                                            ; configure active-high endstop for low end on X via pin !xstop
 M574 Y1 S1 P"!ystop"                                            ; configure active-high endstop for low end on Y via pin !ystop
 M574 Z1 S2                                                      ; configure Z-probe endstop for low end on Z
-M574 U2 S1 p"!zstop"                                            ; configure active-high endstop for high end on U via pin !zstop
+M574 U2 S1 p"!e0stop"                                            ; configure active-high endstop for high end on U via pin !e0stop
 
 ; Z-Probe
 M950 S0 C"^zprobe.mod"                                          ; create servo pin 0 for BLTouch

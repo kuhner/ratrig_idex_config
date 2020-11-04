@@ -24,7 +24,7 @@ M569 P3 S1                                                      ; physical drive
 M569 P4 S1                                                      ; physical drive 4 goes forwards
 M569 P5 S1                                                      ; physical drive 5 goes forwards
 M569 P6 S1                                                      ; physical drive 6 goes forwards
-M584 X0 Y1 Z2:6 U4 E3:5                                         ; set drive mapping
+M584 X0 Y1 Z2:6 U4 E5:3                                         ; set drive mapping
 M350 X256 Y256 Z256 U256 E256:256 I0                            ; configure microstepping without interpolation
 M92 X1280.00 Y1280.00 Z6400.00 U1280.00 E6640.00:6640.00        ; set steps per mm
 M566 X420.00 Y240.00 Z18.00 U420.00 E420.00:420.00              ; set maximum instantaneous speed changes (mm/min)
@@ -34,8 +34,8 @@ M906 X1000 Y1000 Z600 U1000 E750:750 I30                        ; set motor curr
 M84 S30                                                         ; Set idle timeout
 
 ; Axis Limits
-M208 X-105 Y-33 U0 Z0 S1                                           ; set axis minima
-M208 X300 Y200 U405 Z295 S0                                          ; set axis maxima
+M208 X-66 Y-33 U0 Z0 S1                                           ; set axis minima
+M208 X300 Y200 U365 Z295 S0                                          ; set axis maxima
 
 ; Endstops
 M574 X1 S1 P"!xstop"                                            ; configure active-high endstop for low end on X via pin !xstop
@@ -46,7 +46,7 @@ M574 U2 S1 p"!e0stop"                                            ; configure act
 ; Z-Probe
 M950 S0 C"^zprobe.mod"                                          ; create servo pin 0 for BLTouch
 M558 P9 C"^zprobe.in" H5 F120 T9000                             ; set Z probe type to bltouch and the dive height + speeds
-G31 P500 X30 Y0.5 Z3                                            ; set Z probe trigger value, offset and trigger height
+G31 P500 X-30 Y0.5 Z3                                            ; set Z probe trigger value, offset and trigger height
 M557 X10:290 Y10:190 S40                                        ; define mesh grid
 
 ; Heaters
@@ -80,7 +80,7 @@ G10 P1 R0 S0                                                    ; set initial to
 
 ; Custom settings
 M501
-M557 X10:290 Y10:190 P5:5                                       ; Bed leveling mesh
+M557 X0:270 Y10:190 P5:5                                       ; Bed leveling mesh
 M572 D0 S0.025                                                  ; pressure advance
 M671 X-147.75:297.75 Y0:0 S30                                   ; leadscrews at left (connected to Z) and right
 

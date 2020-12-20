@@ -6,6 +6,6 @@
 M83          ; relative extruder movement
 M106 S0      ; turn off our print cooling fan
 G91          ; relative axis movement
-G1 Z3 F500   ; up 3mm
+G1 Z3 F1000   ; up 3mm
 G90          ; absolute axis movement
-G1 S2 X-65 F6000 ; park the X carriage at -65mm
+G1 H0 X-58 F6000 ; park the X carriage at -58mm

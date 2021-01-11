@@ -7,7 +7,7 @@ G91                ; relative positioning
 G1 H2 Z5 F9000     ; lift Z relative to current position
 G1 U400 F2000      ; make sure the U carriage is out of the way
 G90                ; absolute positioning
-G1 X180 Y100 F9000   ; go to first probe point
+G1 X150 Y37.5 F9000   ; go to first probe point
 G30                ; home Z by probing the bed
 
 ; Uncomment the following lines to lift Z after probing

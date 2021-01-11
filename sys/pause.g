@@ -7,5 +7,5 @@ G1 E-10 F3600  ; retract 10mm of filament
 G91            ; relative positioning
 G1 Z5 F360     ; lift Z by 5mm
 G90            ; absolute positioning
-G1 S2 X-58 U360 F6000 ; park both heads
+G1 S2 X-64 U364.33 F6000 ; park both heads
 

@@ -46,7 +46,7 @@ M574 U2 S1 p"!e0stop"                                            ; configure act
 ; Z-Probe
 M950 S0 C"^zprobe.mod"                                          ; create servo pin 0 for BLTouch
 M558 P9 C"^zprobe.in" H5 F120 T9000                             ; set Z probe type to bltouch and the dive height + speeds
-G31 P500 X0 Y62.5 Z2.2                                          ; set Z probe trigger value, offset and trigger height
+G31 P500 X0 Y62.5 Z1.6                                          ; set Z probe trigger value, offset and trigger height
 M557 X10:290 Y10:190 S40                                        ; define mesh grid
 
 ; Heaters
@@ -75,7 +75,7 @@ M563 P0 S"Main (Left)" D0 H1 F0                                 ; define tool 0
 G10 P0 X0 U0 Y0 Z0                                                 ; set tool 0 axis offsets
 G10 P0 R0 S0                                                    ; set initial tool 0 active and standby temperatures to 0C
 M563 P1 S"Secondary (Right)" D1 H2 X3 F2                        ; define tool 1
-G10 P1 X0 U3.45 Y-1.55 Z0.45                                                ; set tool 1 axis offsets
+G10 P1 X5.15 U0 Y0 Z0.3                                                ; set tool 1 axis offsets
 G10 P1 R0 S0                                                    ; set initial tool 1 active and standby temperatures to 0C
 
 ; Custom settings
@@ -85,4 +85,4 @@ M671 X-92.85:392.85 Y0:0 S30                                   ; leadscrews at l
 
 ; Miscellaneous
 T0                                                              ; select first tool
-;M572 D0:1 S0.025:0.025                                         ; Pressure advance
+M572 D0:1 S0.025:0.025                                         ; Pressure advance

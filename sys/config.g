@@ -25,8 +25,8 @@ M569 P4 S0                                                      ; physical drive
 M569 P5 S1                                                      ; physical drive 5 goes forwards
 M569 P6 S1                                                      ; physical drive 6 goes forwards
 M584 X0 Y1 Z2:6 U5 E4:3                                         ; set drive mapping
-M350 X256 Y256 Z256 U256 E256:256 I0                            ; configure microstepping without interpolation (E hob 7.36325)
-M92 X1280.00 Y1280.00 Z6400.00 U1280.00 E6640.00:6640.00        ; set steps per mm
+M350 X32 Y32 Z16 U32 E32:32 I0                                  ; configure microstepping without interpolation (E hob 7.36325)
+M92 X160 Y160 Z400 U160 E830:830                                ; set steps per mm
 M566 X420.00 Y240.00 Z18.00 U420.00 E420.00:420.00              ; set maximum instantaneous speed changes (mm/min)
 M203 X9600.00 Y9600.00 Z180.00 U9600.00 E6000.00:6000.00        ; set maximum speeds (mm/min)
 M201 X800.00 Y500.00 Z100.00 U800.00 E10000.00:10000.00         ; set accelerations (mm/s^2)

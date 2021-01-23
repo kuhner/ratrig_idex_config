@@ -19,7 +19,7 @@ for file in directories:
             if not line :
                 break
             if line.startswith("T"):
-                print("Change this one")
+                print("Changed this one")
                 print(line)
                 t_val = line[1]
                 x_val = line[4:9]

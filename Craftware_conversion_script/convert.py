@@ -32,13 +32,13 @@ for file in directories:
                     z_val = line[index_of_Z:index_of_F-1]
                     f_val = line[index_of_F:]
                     out.append("T" + t_val + ";select tool")
-                    out.append("G1 X" + x_val + " Y" + y_val + " Z" + z_val + " F" + f_val)
+                    out.append("G1 " + x_val + " " + y_val + " " + z_val + " " + f_val)
                 else:
                     x_val = line[index_of_X:index_of_Y-1]
                     y_val = line[index_of_Y:index_of_Z-1]
                     z_val = line[index_of_Z:]
                     out.append("T" + t_val + ";select tool")
-                    out.append("G1 X" + x_val + " Y" + y_val + " Z" + z_val) 
+                    out.append("G1 " + x_val + " " + y_val + " " + z_val) 
             else:
                 out.append(line.strip())
         # Close old file 

@@ -46,7 +46,7 @@ M574 U2 S1 p"!e0stop"                                            ; configure act
 ; Z-Probe
 M950 S0 C"^zprobe.mod"                                          ; create servo pin 0 for BLTouch
 M558 P9 C"^zprobe.in" H5 F120 T9000                             ; set Z probe type to bltouch and the dive height + speeds
-G31 P500 X0 Y62.5 Z1.35                                          ; set Z probe trigger value, offset and trigger height
+G31 P500 X0 Y62.5 Z1.3                                          ; set Z probe trigger value, offset and trigger height
 M557 X10:290 Y10:190 S40                                        ; define mesh grid
 
 ; Heaters

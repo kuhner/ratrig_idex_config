@@ -19,20 +19,26 @@ for file in directories:
             if not line :
                 break
             if line.startswith("T"):
-                print("Changed this one")
+                print("Change this one:")
                 print(line)
                 t_val = line[1]
                 index_of_X = line.index("X")
                 index_of_Y = line.index("Y")
                 index_of_Z = line.index("Z")
-                index_of_F = line.index("F")
-
-                x_val = line[index_of_X:index_of_Y-1]
-                y_val = line[index_of_Y:index_of_Z-1]
-                z_val = line[index_of_Z:index_of_F-1]
-                f_val = line[index_of_F:index_of_F-2]#-2 to get rid of newline character
-                out.append("T" + t_val + ";select tool")
-                out.append("G1 X" + x_val + " Y" + y_val + " Z" + z_val + " F" + f_val)
+                if line.find("F") != -1:
+                    index_of_F = line.index("F")
+                    x_val = line[index_of_X:index_of_Y-1]
+                    y_val = line[index_of_Y:index_of_Z-1]
+                    z_val = line[index_of_Z:index_of_F-1]
+                    f_val = line[index_of_F:]
+                    out.append("T" + t_val + ";select tool")
+                    out.append("G1 X" + x_val + " Y" + y_val + " Z" + z_val + " F" + f_val)
+                else:
+                    x_val = line[index_of_X:index_of_Y-1]
+                    y_val = line[index_of_Y:index_of_Z-1]
+                    z_val = line[index_of_Z:]
+                    out.append("T" + t_val + ";select tool")
+                    out.append("G1 X" + x_val + " Y" + y_val + " Z" + z_val) 
             else:
                 out.append(line.strip())
         # Close old file 

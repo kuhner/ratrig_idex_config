@@ -21,7 +21,8 @@ for file in directories:
                 break
             elif line.find("REPLACE WITH TEMP SETTINGS") != -1:
                 file_index_of_new_temp_settings = len(out)
-            elif line.find(";set") != -1 and line.find(";temp"):
+                out.append("HERE")
+            elif line.find(";set") != -1 and line.find("temp") != -1:
                 temp_settings.append(line)
             elif line.startswith("T"):
                 print("Change this one:")

@@ -12,13 +12,18 @@ for file in directories:
         file_to_fix = open (file, "r")
         # Read list of lines
         out = [] # list to save lines
+        temp_settings = []
         while True:
             # Read next line
             line = file_to_fix.readline()
             # If line is blank, then you struck the EOF
             if not line :
                 break
-            if line.startswith("T"):
+            elif line.find("REPLACE WITH TEMP SETTINGS") != -1:
+                file_index_of_new_temp_settings = len(out)
+            elif line.find(";set") != -1 and line.find(";temp"):
+                temp_settings.append(line)
+            elif line.startswith("T"):
                 print("Change this one:")
                 print(line)
                 t_val = line[1]
@@ -47,8 +52,12 @@ for file in directories:
         #Create fixed file and write new lines
         new_file_name = file.replace(".", "_FIXED.")
         wr = open(new_file_name, "w")
-        for line in out:
+        for idx, line in enumerate(out):
             # write all lines
-            wr.write(line)
-            wr.write("\n")
+            if idx == file_index_of_new_temp_settings:
+                for setting in temp_settings:
+                    wr.write(setting)
+            else:
+                wr.write(line)
+                wr.write("\n")
         wr.close()

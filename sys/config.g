@@ -27,15 +27,15 @@ M569 P6 S1                                                      ; physical drive
 M584 X0 Y1 Z2:6 U5 E4:3                                         ; set drive mapping
 M350 X32 Y32 Z16 U32 E32:32 I0                                  ; configure microstepping without interpolation (E hob 7.36325)
 M92 X160 Y160 Z400 U160 E830:830                                ; set steps per mm
-M566 X420.00 Y240.00 Z18.00 U420.00 E420.00:420.00              ; set maximum instantaneous speed changes (mm/min)
-M203 X9600.00 Y9600.00 Z180.00 U9600.00 E6000.00:6000.00        ; set maximum speeds (mm/min)
-M201 X800.00 Y500.00 Z100.00 U800.00 E10000.00:10000.00         ; set accelerations (mm/s^2)
+M566 X420.00 Y240.00 Z13.00 U420.00 E420.00:420.00              ; set maximum instantaneous speed changes (mm/min)
+M203 X9600.00 Y9600.00 Z130.00 U9600.00 E6000.00:6000.00        ; set maximum speeds (mm/min)
+M201 X800.00 Y500.00 Z80.00 U800.00 E10000.00:10000.00         ; set accelerations (mm/s^2)
 M906 X800 Y1000 Z900 U800 E750:750 I30                          ; set motor currents (mA) and motor idle factor in per cent
 M84 S30                                                         ; Set idle timeout
 
 ; Axis Limits
-M208 X-64 Y-42.5 U0 Z0 S1                                           ; set axis minima
-M208 X300 Y200 U364.33 Z295 S0                                          ; set axis maxima
+M208 X-66 Y-42.5 U0 Z0 S1                                           ; set axis minima
+M208 X300 Y200 U362.63 Z295 S0                                          ; set axis maxima
 
 ; Endstops
 M574 X1 S1 P"!xstop"                                            ; configure active-high endstop for low end on X via pin !xstop
@@ -44,9 +44,9 @@ M574 Z1 S2                                                      ; configure Z-pr
 M574 U2 S1 p"!e0stop"                                            ; configure active-high endstop for high end on U via pin !e0stop
 
 ; Z-Probe
-M950 S0 C"^zprobe.mod"                                          ; create servo pin 0 for BLTouch
+M950 S0 C"zprobe.mod"                                          ; create servo pin 0 for BLTouch
 M558 P9 C"^zprobe.in" H5 F120 T9000                             ; set Z probe type to bltouch and the dive height + speeds
-G31 P500 X0 Y62.5 Z1.3                                          ; set Z probe trigger value, offset and trigger height
+G31 P500 X0 Y62.5 Z0.60                                          ; set Z probe trigger value, offset and trigger height
 M557 X10:290 Y10:190 S40                                        ; define mesh grid
 
 ; Heaters
@@ -72,14 +72,14 @@ M106 P2 S0 H-1                                                  ; set fan 2 valu
 
 ; Tools
 M563 P0 S"Main (Left)" D0 H1 F0                                 ; define tool 0
-G10 P0 X0 U0 Y0 Z0                                                 ; set tool 0 axis offsets
+G10 P0 X0 U0 Y0 Z0                                              ; set tool 0 axis offsets
 G10 P0 R0 S0                                                    ; set initial tool 0 active and standby temperatures to 0C
 M563 P1 S"Secondary (Right)" D1 H2 X3 F2                        ; define tool 1
-G10 P1 X7.7 U0 Y0 Z0.3                                                ; set tool 1 axis offsets
+G10 P1 X0 U4.1 Y0 Z.23                                         ; set tool 1 axis offsets
 G10 P1 R0 S0                                                    ; set initial tool 1 active and standby temperatures to 0C
 
 ; Custom settings
-M501
+;M501;load
 M557 X10:290 Y20:190 P5:5                                          ; Bed leveling mesh
 M671 X-92.85:392.85 Y0:0 S30                                   ; leadscrews at left (connected to Z) and right
 

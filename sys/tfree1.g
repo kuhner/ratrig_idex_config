@@ -8,4 +8,4 @@ M106 S0           ; turn off our print cooling fan
 G91 ; relative axis movement
 G1 Z3 F1000 ; up 3mm
 G90 ; absolute axis movement
-G1 H0 U364.33 F6000 ; park the U carriage at 364.33mm
+G1 H0 U362.63 F6000 ; park the U carriage at 362.63mm

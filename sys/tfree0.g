@@ -8,4 +8,4 @@ M106 S0      ; turn off our print cooling fan
 G91          ; relative axis movement
 G1 Z3 F1000   ; up 3mm
 G90          ; absolute axis movement
-G1 H0 X-64 F6000 ; park the X carriage at --64mm
+G1 H0 X-66 F6000 ; park the X carriage at --64mm

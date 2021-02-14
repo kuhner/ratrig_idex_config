@@ -44,9 +44,9 @@ M574 Z1 S2                                                      ; configure Z-pr
 M574 U2 S1 p"!e0stop"                                            ; configure active-high endstop for high end on U via pin !e0stop
 
 ; Z-Probe
-M950 S0 C"zprobe.mod"                                          ; create servo pin 0 for BLTouch
+M950 S0 C"^zprobe.mod"                                          ; create servo pin 0 for BLTouch
 M558 P9 C"^zprobe.in" H5 F120 T9000                             ; set Z probe type to bltouch and the dive height + speeds
-G31 P500 X0 Y62.5 Z0.60                                          ; set Z probe trigger value, offset and trigger height
+G31 P500 X0 Y62.5 Z2.05                                          ; set Z probe trigger value, offset and trigger height
 M557 X10:290 Y10:190 S40                                        ; define mesh grid
 
 ; Heaters
@@ -55,12 +55,15 @@ M950 H0 C"bedheat" T0                                           ; create bed hea
 M307 H0 B0 S1.00                                                ; disable bang-bang mode for the bed heater and set PWM limit
 M140 H0                                                         ; map heated bed to heater 0
 M143 H0 S200                                                    ; set temperature limit for heater 0 to 200C
+M307 H0 R0.866 C330.0 D8.34 S1.00 V24.1 ;tuning settings
 M308 S1 P"e0temp" Y"thermistor" T500000 B4723 C1.19622e-7       ; configure sensor 1 as thermistor on pin e0temp
 M950 H1 C"e0heat" T1                                            ; create nozzle heater output on e0heat and map it to sensor 1
 M307 H1 B0 S1.00                                                ; disable bang-bang mode for heater  and set PWM limit
+M307 H1 R3.216 C147.0 D7.00 S1.00 V23.7 ;tuning settings
 M308 S2 P"e1temp" Y"thermistor" T500000 B4723 C1.19622e-7       ; configure sensor 2 as thermistor on pin e1temp
 M950 H2 C"e1heat" T2                                            ; create nozzle heater output on e1heat and map it to sensor 2
 M307 H2 B0 S1.00                                                ; disable bang-bang mode for heater  and set PWM limit
+M307 H2 R2.211 C174.0 D5.85 S1.00 V23.8 ;tuning settings
 
 ; Fans
 M950 F0 C"fan0" Q500                                            ; create fan 0 on pin fan0 and set its frequency

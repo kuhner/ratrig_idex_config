@@ -25,16 +25,16 @@ M569 P4 S0                                                      ; physical drive
 M569 P5 S1                                                      ; physical drive 5 goes forwards
 M569 P6 S1                                                      ; physical drive 6 goes forwards
 M584 X0 Y1 Z2:6 U5 E4:3                                         ; set drive mapping
-M350 X32 Y32 Z16 U32 E32:32 I0                                  ; configure microstepping without interpolation (E hob 7.36325)
-M92 X160 Y160 Z400 U160 E830:830                                ; set steps per mm
+M350 X64 Y64 Z32 U64 E64:64 I0                                  ; configure microstepping without interpolation (E hob 7.36325)
+M92 X320 Y320 Z800 U320 E1660:1660                                ; set steps per mm
 M566 X420.00 Y240.00 Z13.00 U420.00 E420.00:420.00              ; set maximum instantaneous speed changes (mm/min)
 M203 X9600.00 Y9600.00 Z130.00 U9600.00 E6000.00:6000.00        ; set maximum speeds (mm/min)
-M201 X800.00 Y500.00 Z80.00 U800.00 E10000.00:10000.00         ; set accelerations (mm/s^2)
-M906 X800 Y1000 Z900 U800 E750:750 I30                          ; set motor currents (mA) and motor idle factor in per cent
+M201 X800.00 Y400.00 Z80.00 U800.00 E10000.00:10000.00         ; set accelerations (mm/s^2)
+M906 X800 Y1000 Z1000 U800 E750:750 I30                          ; set motor currents (mA) and motor idle factor in per cent
 M84 S30                                                         ; Set idle timeout
 
 ; Axis Limits
-M208 X-66 Y-42.5 U0 Z0 S1                                           ; set axis minima
+M208 X-64.75 Y-48.8 U0 Z0 S1                                           ; set axis minima
 M208 X300 Y200 U362.63 Z295 S0                                          ; set axis maxima
 
 ; Endstops
@@ -46,7 +46,7 @@ M574 U2 S1 p"!e0stop"                                            ; configure act
 ; Z-Probe
 M950 S0 C"^zprobe.mod"                                          ; create servo pin 0 for BLTouch
 M558 P9 C"^zprobe.in" H5 F120 T9000                             ; set Z probe type to bltouch and the dive height + speeds
-G31 P500 X0 Y62.5 Z2.05                                          ; set Z probe trigger value, offset and trigger height
+G31 P500 X0 Y62.5 Z0.9                                          ; set Z probe trigger value, offset and trigger height
 M557 X10:290 Y10:190 S40                                        ; define mesh grid
 
 ; Heaters
@@ -59,11 +59,11 @@ M307 H0 R0.866 C330.0 D8.34 S1.00 V24.1 ;tuning settings
 M308 S1 P"e0temp" Y"thermistor" T500000 B4723 C1.19622e-7       ; configure sensor 1 as thermistor on pin e0temp
 M950 H1 C"e0heat" T1                                            ; create nozzle heater output on e0heat and map it to sensor 1
 M307 H1 B0 S1.00                                                ; disable bang-bang mode for heater  and set PWM limit
-M307 H1 R3.216 C147.0 D7.00 S1.00 V23.7 ;tuning settings
+M307 H1 R3.216 C147.0 D7.00 S1.00 V23.7 ;tuning settings @240deg no fan
 M308 S2 P"e1temp" Y"thermistor" T500000 B4723 C1.19622e-7       ; configure sensor 2 as thermistor on pin e1temp
 M950 H2 C"e1heat" T2                                            ; create nozzle heater output on e1heat and map it to sensor 2
 M307 H2 B0 S1.00                                                ; disable bang-bang mode for heater  and set PWM limit
-M307 H2 R2.211 C174.0 D5.85 S1.00 V23.8 ;tuning settings
+M307 H2 R2.211 C174.0 D5.85 S1.00 V23.8 ;tuning settings @240deg no fan
 
 ; Fans
 M950 F0 C"fan0" Q500                                            ; create fan 0 on pin fan0 and set its frequency
@@ -78,14 +78,14 @@ M563 P0 S"Main (Left)" D0 H1 F0                                 ; define tool 0
 G10 P0 X0 U0 Y0 Z0                                              ; set tool 0 axis offsets
 G10 P0 R0 S0                                                    ; set initial tool 0 active and standby temperatures to 0C
 M563 P1 S"Secondary (Right)" D1 H2 X3 F2                        ; define tool 1
-G10 P1 X0 U4.1 Y0 Z.23                                         ; set tool 1 axis offsets
+G10 P1 X0 U3.05 Y0 Z0                                         ; set tool 1 axis offsets, U Positive moves to the left, U negative moves to the right, Z negative moves up 
 G10 P1 R0 S0                                                    ; set initial tool 1 active and standby temperatures to 0C
 
 ; Custom settings
 ;M501;load
-M557 X10:290 Y20:190 P5:5                                          ; Bed leveling mesh
+M557 X10:290 Y17:190 P5:5                                          ; Bed leveling mesh
 M671 X-92.85:392.85 Y0:0 S30                                   ; leadscrews at left (connected to Z) and right
 
 ; Miscellaneous
 T0                                                              ; select first tool
-M572 D0:1 S0.030:0.030                                         ; Pressure advance
+M572 D0:1 S0.037:0.037                                         ; Pressure advance
